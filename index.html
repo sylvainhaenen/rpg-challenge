@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>RPG 1</title>
+</head>
+<!-------------------------------------------------------BODY--------------------------------------------------------------------------->
+<body>
+    <header><h1>Versus Quest</h1></header>
+<!----------------------------------------------------THE GRID-------------------------------------------------------------------------->
+    <section class="container">
+        <!--------------------------------------------Intitulés-------------------------------------------------------->
+
+        <h2>Combat de Héros !</h2>
+        <article id="case1"></article>
+        <article id="case2"></article>
+        
+        <!-----------------------------------------------Barres de HP--------------------------------------->
+
+        <progress id="health" value="100" max="100"></progress>
+        <progress id="health2" value="100" max="100"></progress>
+        
+        <!-----------------------------Noms des perso à afficher/invisibiliser ------------------------------------------>
+ 
+        <div id="Herm"> Herm le vaillant Soldat</div>
+        <div id="Tyn"> Tyn le Guerrier Elf</div>
+        <div id="Raynel"> Raynel le Mage Rouge</div>
+        <div id="Grent"> Grent le Saigneur Vampire</div>
+        <!----------------------------Images des perso à afficher/invisibiliser------------------------------------------>
+
+        <!--                                    EXPLICATIONS :
+        Les images et ID portant le chiffre 1 sont faites pour aller sur la gauche de l'écran ( pour le joueur 1)
+            Les images et les ID portant le chiffre 2 sont faites pour aller sur la droite de l'écran ( pour le joueur 2 )*/
+        -->  
+
+        <!----------------------------Côté Gauche de l'écran (Joueur 1)-------------------------------------->
+
+        <img src="images/humain.png" alt="Image de Herm l'humain" id="hero1">
+        <img src="images/Elf1.png" alt="Image de Tyn" id="elfe1">
+        <img src="images/Mage1.png" alt="Raynel le Mage" id="mage1">
+        <img src="images/Lich3.png" alt="Image de Grent le Vampire" id="vampire1">
+        
+        <!----------------------------Côté Droit de l'écran (Joueur 2)--------------------------------------->
+
+        <img src="images/humain2.png" alt="Image de Herm l'humain" id="hero2">
+        <img src="images/Elf2.png" alt="Image de Tyn" id="elfe2">
+        <img src="images/Mage2.png" alt="Raynel le Mage" id="mage2">
+        <img src="images/Lich3.png" alt="Image de Grent le Vampire" id="vampire2">
+
+        <!--------------------------------------------Left Buttons-------------------------------------------------------->
+
+        <button type="button" id="button1" class="tonbou">Attaque !</button>
+        <button type="button" id="button2" class="tonbou">Soigner !</button>
+        <button type="button" id="button3" class="tonbou">Brandir !</button>
+
+        <!--------------------------------------------Right Buttons-------------------------------------------------------->
+       
+        <button type="button" id="button4" class="tonbou">Attaque !</button>
+        <button type="button" id="button5" class="tonbou">Soigner !</button>
+        <button type="button" id="button6" class="tonbou">Brandir !</button>
+
+        <!--------------------------------------------Selectors-------------------------------------------------------->
+        
+            <section id = "selector1">
+                <form id="carform">
+                    <label for="fname">Écris ton nom :</label>
+                    <input type="text" id="fname" name="fname">
+                    <input id="envoyer1" type="submit" id="envoyer">
+                </form>
+                <br>
+                
+                <label for="cars">Choisis ton héros :</label>
+                <select id="cars" name="carlist" form="carform">
+                    <option value="volvo">Humain</option>
+                    <option value="saab">Elfe</option>
+                    <option value="opel">Orc</option>
+                    <option value="audi">Vampire</option>
+            </select>
+            <label for="cars">Choisis ton Objet :</label>
+                <select id="cars" name="carlist" form="carform">
+                    <option value="volvo">Bottes</option>
+                    <option value="saab">Baton</option>
+                    <option value="opel">Épée</option>
+                    <option value="audi">Arc</option>
+                </select>
+            </section>
+
+            <section id = "selector2">
+                <form  id="carform">
+                    <label for="fname">Écris ton nom :</label>
+                    <input type="text" id="fname" name="fname">
+                    <input id="envoyer2" type="submit" id="envoyer">
+                </form>
+                <br>
+                
+                <label for="cars">Choisis ton héros :</label>
+                <select id="cars" name="carlist" form="carform">
+                    <option value="volvo">Humain</option>
+                    <option value="saab">Elfe</option>
+                    <option value="opel">Orc</option>
+                    <option value="audi">Vampire</option>
+                </select>
+                <label for="cars">Choisis ton Objet :</label>
+                <select id="cars" name="carlist" form="carform">
+                    <option value="volvo">Bottes</option>
+                    <option value="saab">Baton</option>
+                    <option value="opel">Épée</option>
+                    <option value="audi">Arc</option>
+                </select>
+            </section>
+
+        
+        <!--------------------------------------------Attaques Log and display------------------------------------------------------>
+   
+        <section id="attackdisplay1">
+           <p id="greetings">Attaques Log</p>   
+        </section>
+
+    </section>
+
+
+    <script src="character.js"></script>
+</body>
+
+</html>
