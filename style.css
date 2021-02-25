@@ -1,0 +1,221 @@
+body {
+    background-color: rgb(247, 239, 213);
+    background-image: url(images/dq3.jpg);
+}
+h1 {
+    text-align: center;
+    font-size: 400%;
+    color: blanchedalmond;
+}
+/*-----------------------------------The Grid-------------------------------------*/
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 4fr 1fr;
+    column-gap: 20px;
+    row-gap: 10px;
+    background-color: rgb(230, 230, 230, 0.9);
+    color: rgb(247, 239, 213,);
+    border: solid 5px white;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+h2 {
+    grid-column: span 2;
+    grid-row: 1;
+    text-align:center;
+    color:black;
+    background-color: whitesmoke;
+    font-size:25px; 
+}
+#case1 {
+    grid-column: 1;
+    grid-row: 3;
+    border: solid 5px white;
+    background-color: whitesmoke;
+    margin-left:10px ;
+}
+#case2 {
+    grid-column: 2;
+    grid-row: 3;
+    border: solid 5px white;
+    background-color: whitesmoke;
+    margin-right: 10px;
+}
+#health {
+    grid-column: 1;
+    grid-row: 3;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 7px;
+    border-radius: 20px;
+}
+#health2 {
+    grid-column: 2;
+    grid-row: 3;
+    position: relative;
+    justify-self: end;
+    margin-right: 20px;
+    margin-top: 7px;
+    border-radius: 20px;
+}
+progress {
+    background: brown;
+    width: 250px;
+    height: 30px;
+    border-radius: 20px;
+}
+progress[value]::-webkit-progress-value { 
+    background-color:red
+}
+/*------------------------------------Images Personnages----------------------------------*/
+/*                                      EXPLICATIONS :
+Les images et ID portant le chiffre 1 sont faites pour aller sur la gauche de l'écran ( pour le joueur 1)
+    Les images et les ID portant le chiffre 2 sont faites pour aller sur la droite de l'écran ( pour le joueur 2 )*/
+
+/*-------------------------Côté Gauche de l'écran ( joueur 1) ------------------------------*/
+#hero1 {
+    grid-column: 1;
+    grid-row: 3;
+    margin-left: 40%;
+    margin-top: 20px;
+    display: block;
+}
+#elfe1 {
+    grid-column: 1;
+    grid-row: 3;
+    margin-left: 50%;
+    margin-top: 20px;
+    display: none;
+}
+#mage1 {
+    grid-column: 1;
+    grid-row: 3;
+    margin-left: 55%;
+    margin-top: 20px;
+    display: none;
+}
+#vampire1 { 
+    grid-column: 1;
+    grid-row: 3;
+    margin-left: 55%;
+    margin-top: 25px;
+    max-height: 80%;
+    position: relative;
+    display: none;
+}
+
+/*-------------------------Côté Droit de l'écran ( joueur 2) ------------------------------*/
+#hero2 {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 20px;
+    display: none;
+
+}
+#elfe2 {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 20px;
+    display: none;
+}
+#mage2 {
+    grid-column: 2;
+    grid-row: 3;
+    margin-top: 20px;
+    margin-left: 40px;
+    display: none;
+}
+#vampire2 { 
+    grid-column: 2;
+    grid-row: 3;
+    margin-left: 60px;
+    margin-top: 25px;
+    max-height: 80%;
+    position: relative;
+    display: block;
+}
+/*------------------------------------Buttons Left----------------------------------------*/
+#button1 {
+    max-width: 65px;
+    max-height: 50px;
+    grid-row: 4;
+    grid-column: 1;
+    align-self: auto;
+    justify-content: center;
+    margin-left: 27%;
+}
+#button2 {
+    max-width: 65px;
+    max-height: 50px;
+    grid-row: 4;
+    grid-column: 1;
+    align-self: auto;
+    justify-content: center;
+    margin-left: 47%;
+}
+#button3 {
+    max-width: 65px;
+    max-height: 50px;
+    grid-row: 4;
+    grid-column: 1;
+    align-self: auto;
+    justify-content: center;
+    margin-left: 67%;
+}
+/*------------------------------------Buttons Right----------------------------------------*/
+#button4 {
+    max-width: 65px;
+    max-height: 50px;
+    grid-row: 4;
+    grid-column: 2;
+    align-self: auto;
+    justify-content: center;
+    margin-left: 22%;
+}
+#button5 {
+    max-width: 65px;
+    max-height: 50px;
+    grid-row: 4;
+    grid-column: 2;
+    align-self: auto;
+    justify-content: center;
+    margin-left: 42%;
+}
+#button6 {
+    max-width: 65px;
+    max-height: 50px;
+    grid-row: 4;
+    grid-column: 2;
+    align-self: auto;
+    justify-content: center;
+    margin-left: 62%;
+}
+/*------------------------------------Dropdown----------------------------------------*/
+#selector1, #selector2 {
+    align-self: center;
+    position: relative;
+    justify-content: center;
+    margin-left: 10%;
+}
+/*-----------------------------------Attaque Display------------------------------------*/
+#attackdisplay1 { 
+    margin-left: auto;
+    margin-right: auto;
+    grid-row: span 3;
+    grid-column: span 2;
+    bottom: 50px;
+    position: relative;
+    background-color: burlywood;
+    text-align: center;
+    font-size:20px;
+    border-radius:10px;
+    padding:20px;
+    width:180px;
+    height: 550px;
+    height:auto;
+    place-self:center;
+  }
+  .hidden {
+      display: none;
+  }

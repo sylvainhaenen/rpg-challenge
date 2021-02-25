@@ -1,18 +1,18 @@
 /*--------------------------------------------Character's Name----------------------------------*/
 
-document.getElementById("Herm").style.display = "none";
-document.getElementById("Tyna").style.display = "none";
-document.getElementById("Raynel").style.display = "none";
-document.getElementById("Grent").style.display = "none";
+showHideElement (document.getElementById("Herm"), false)
+showHideElement (document.getElementById("Tyn"), false)
+showHideElement (document.getElementById("Raynel"), false)
+showHideElement (document.getElementById("Grent"), false)
 
 /*---------------------------------------------Display None-------------------------------------*/
 
 
-document.getElementById("attackdisplay1").style.display = "none";
+showHideElement (document.getElementById("attackdisplay1"), false)
 var tableauBoutons = document.querySelectorAll(".tonbou")
 
 tableauBoutons.forEach(element => {
-    element.style.display = "none"
+    showHideElement (element, false)
     
 });
 
@@ -21,6 +21,20 @@ tableauBoutons.forEach(element => {
 
 var player1Ready = false;
 var player2Ready = false;
+
+var selectRace1 = document.getElementById("race1")
+var selectRace2 = document.getElementById("race2")
+
+var selectArray = [selectRace1, selectRace2]
+selectArray.forEach(element => {
+
+    element.addEventListener("change", (e) => {
+
+        if(element.selectedOptions[0].value == "elfe"){
+            //in progress
+        }
+    } )
+})
 
 
 var boutonEnvoyer1 = document.getElementById("envoyer1")
@@ -44,16 +58,105 @@ boutonsArray.forEach(element => {
 
 
         if (player1Ready && player2Ready) {
-            document.getElementById("attackdisplay1").style.display = "inline";
-            tableauBoutons.forEach(element => {
-                element.style.display = "inline"
             
+            showHideElement (document.getElementById("attackdisplay1"), true)
+            
+            tableauBoutons.forEach(element => {
+
+                showHideElement (element, true)
             
             });
         }
     
     })
 })
+
+/*------------------------------------------------Races des Personnages-----------------------------------------------*/
+const races = [
+    {
+        race: "Humain",
+        name: "Herm",
+        HP: 100,
+        ATK: 100,
+        DEF: 120,
+        DEX: 100,
+        img: "humain.png",
+    },
+    {
+        race: "Elfe",
+        name: "Tyn",
+        HP: 100,
+        ATK: 100,
+        DEF: 100,
+        DEX: 130,
+        img: "Elf1.png",
+    },
+    {
+        race: "Orc",
+        name: "Raynel",
+        HP: 140,
+        ATK: 100,
+        DEF: 100,
+        DEX: 100,
+        img: "Orc.png",
+    },
+    {
+        race: "Vampire",
+        name: "Grent",
+        HP: 100,
+        ATK: 100,
+        DEF: 100,
+        DEX: 100,
+        CAP: "stealhp",
+        img: "Lich.png",
+    },
+]
+
+/*------------------------------------------------Items-----------------------------------------------*/
+const items = [
+    {
+        type: "bottes",
+        effet: (DEX + 30),
+    },
+    {
+        type: "baton",
+        effet: (HP + 20),
+    },
+    {
+        type: "epee",
+        effet: (ATK + 30),
+    },
+    {
+        type: "arc",
+        effet: ("atkx2"),
+    },
+]
+/*------------------------------------------------Fonctions-------------------------------------------------------------------*/
+
+function showHideElement (element, show){
+
+    if (show === true){
+
+        element.classList.remove ("hidden")
+
+    } else if (show === false){
+        element.classList.add ("hidden")
+    }
+        
+
+
+}
+/* 
+function changePlayerPortrait (player, imgSrc) {
+
+    if (player === 1){
+
+        
+
+
+    }
+}
+*/
 
 
 /*----------------------------------------------Character Generator--------------------------------*/
@@ -77,59 +180,3 @@ function Person(race,item){
         return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`);
     };
 }
-/*------------------------------------------------Races des Personnages-----------------------------------------------*/
-const race = [
-    {
-        race: "Humain",
-        name: "Herm",
-        HP: 100,
-        ATK: 100,
-        DEF: 120,
-        DEX: 100,
-    },
-    {
-        race: "Elfe",
-        name: "Tyna",
-        HP: 100,
-        ATK: 100,
-        DEF: 100,
-        DEX: 130,
-    },
-    {
-        race: "Orc",
-        name: "Raynel",
-        HP: 140,
-        ATK: 100,
-        DEF: 100,
-        DEX: 100,
-    },
-    {
-        race: "Vampire",
-        name: "Grent",
-        HP: 100,
-        ATK: 100,
-        DEF: 100,
-        DEX: 100,
-        CAP: "stealhp"
-    },
-]
-
-/*------------------------------------------------Items-----------------------------------------------*/
-const items = [
-    {
-        type: "bottes",
-        effet: (DEX + 30),
-    },
-    {
-        type: "baton",
-        effet: (HP + 20),
-    },
-    {
-        type: "epee",
-        effet: (ATK + 30),
-    },
-    {
-        type: "arc",
-        effet: ("atkx2"),
-    },
-]
