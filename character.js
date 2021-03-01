@@ -1,4 +1,12 @@
+/*--------------------------------------------Create Players------------------------------------*/
+
+let player1 ;
+let player2 ;
+
+
+
 /*--------------------------------------------Character's Name----------------------------------*/
+
 
 showHideElement (document.getElementById("Herm"), false)
 showHideElement (document.getElementById("Tyn"), false)
@@ -7,7 +15,8 @@ showHideElement (document.getElementById("Grent"), false)
 
 /*---------------------------------------------Display None-------------------------------------*/
 
-
+showHideElement (document.getElementById("health1"), false)
+showHideElement (document.getElementById("health2"), false)
 showHideElement (document.getElementById("attackdisplay1"), false)
 var tableauBoutons = document.querySelectorAll(".tonbou")
 
@@ -25,15 +34,26 @@ var player2Ready = false;
 var selectRace1 = document.getElementById("race1")
 var selectRace2 = document.getElementById("race2")
 
-var selectArray = [selectRace1, selectRace2]
-selectArray.forEach(element => {
+var selectObject1 = document.getElementById("object1")
+var selectObject2 = document.getElementById("object2")
+
+var selectRaceArray = [selectRace1, selectRace2]
+selectRaceArray.forEach(element => {
 
     element.addEventListener("change", (e) => {
 
-        if(element.selectedOptions[0].value == "elfe"){
-            //in progress
+        const valueOfSelectElement =  e.target.selectedOptions[0].value
+
+        if(element.id == "race1") {
+
+            changePlayerPortrait (1, "./images/" + valueOfSelectElement + ".png" )
+        
+        } else if (element.id == "race2") {
+
+            changePlayerPortrait (2, "./images/" + valueOfSelectElement + ".png" )
+
         }
-    } )
+    }  )
 })
 
 
@@ -58,80 +78,75 @@ boutonsArray.forEach(element => {
 
 
         if (player1Ready && player2Ready) {
-            
-            showHideElement (document.getElementById("attackdisplay1"), true)
-            
-            tableauBoutons.forEach(element => {
 
-                showHideElement (element, true)
-            
-            });
+            startGame ()
+              
         }
     
     })
 })
 
-/*------------------------------------------------Races des Personnages-----------------------------------------------*/
-const races = [
-    {
-        race: "Humain",
-        name: "Herm",
-        HP: 100,
-        ATK: 100,
-        DEF: 120,
-        DEX: 100,
-        img: "humain.png",
-    },
-    {
-        race: "Elfe",
-        name: "Tyn",
-        HP: 100,
-        ATK: 100,
-        DEF: 100,
-        DEX: 130,
-        img: "Elf1.png",
-    },
-    {
-        race: "Orc",
-        name: "Raynel",
-        HP: 140,
-        ATK: 100,
-        DEF: 100,
-        DEX: 100,
-        img: "Orc.png",
-    },
-    {
-        race: "Vampire",
-        name: "Grent",
-        HP: 100,
-        ATK: 100,
-        DEF: 100,
-        DEX: 100,
-        CAP: "stealhp",
-        img: "Lich.png",
-    },
-]
+
 
 /*------------------------------------------------Items-----------------------------------------------*/
 const items = [
     {
         type: "bottes",
-        effet: (DEX + 30),
+        //effet: (DEX + 30),
     },
     {
         type: "baton",
-        effet: (HP + 20),
+        //effet: (HP + 20),
     },
     {
         type: "epee",
-        effet: (ATK + 30),
+        //effet: (ATK + 30),
     },
     {
         type: "arc",
-        effet: ("atkx2"),
+        //effet: ("atkx2"),
     },
 ]
 /*------------------------------------------------Fonctions-------------------------------------------------------------------*/
+
+function startGame (){
+
+    player1 = new Player (document.getElementById("player1Name").value, selectRace1.selectedOptions[0].value, selectObject1.selectedOptions[0].value) 
+    player2 = new Player (document.getElementById("player2Name").value, selectRace2.selectedOptions[0].value, selectObject2.selectedOptions[0].value)
+
+    console.log(player1, player2)
+    
+     showGameElements ()
+
+}
+
+function showGameElements (){
+
+    showHideElement (document.getElementById("attackdisplay1"), true)
+
+    showHideElement (document.getElementById("health1"), true)
+
+    showHideElement (document.getElementById("health2"), true)
+    
+    tableauBoutons.forEach(element => {
+
+        showHideElement (element, true)
+    
+    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 function showHideElement (element, show){
 
@@ -146,17 +161,22 @@ function showHideElement (element, show){
 
 
 }
-/* 
+ 
 function changePlayerPortrait (player, imgSrc) {
 
     if (player === 1){
 
-        
+        const imgPlayer1 = document.getElementById("portraitPlayer1")
+        imgPlayer1.src= imgSrc
 
+    } else if (player === 2) {
+
+        const imgPlayer2 = document.getElementById("portraitPlayer2")
+        imgPlayer2.src= imgSrc
 
     }
 }
-*/
+
 
 
 /*----------------------------------------------Character Generator--------------------------------*/
@@ -170,7 +190,11 @@ function Person(race,item){
     this.maxDamage = 20;
     this.maxHealing = 30;
 
-    this.heal = function(){};
+    this.heal = function(value){
+        
+        this.currenthealth += value
+
+    };
 
     this.damage = function(){};
 
@@ -180,3 +204,15 @@ function Person(race,item){
         return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`);
     };
 }
+
+
+/*
+var player1 = new Person("humain", "bottes")
+
+var player2 = new Person("humain", "bottes")
+
+player1.race = "vampire"
+*/
+
+
+

@@ -20,8 +20,17 @@
         
         <!-----------------------------------------------Barres de HP--------------------------------------->
 
-        <progress id="health" value="100" max="100"></progress>
-        <progress id="health2" value="100" max="100"></progress>
+        <div id="health1" class="health-bar" data-total="1000" data-value="100">
+            <div class="bar">
+                <div class="hit"></div>
+            </div>
+            </div>
+        
+        <div id="health2" class="health-bar2" data-total="1000" data-value="100">
+        <div class="bar2">
+            <div class="hit2"></div>
+        </div>
+        </div>
         
         <!-----------------------------Noms des perso à afficher/invisibiliser ------------------------------------------>
  
@@ -29,6 +38,7 @@
         <div id="Tyn"> Tyn le Guerrier Elf</div>
         <div id="Raynel"> Raynel le Mage Rouge</div>
         <div id="Grent"> Grent le Seigneur Vampire</div>
+
         <!----------------------------Images des perso à afficher/invisibiliser------------------------------------------>
 
         <!--                                    EXPLICATIONS :
@@ -38,17 +48,11 @@
 
         <!----------------------------Côté Gauche de l'écran (Joueur 1)-------------------------------------->
 
-        <img src="images/humain.png" alt="Image de Herm l'humain" id="hero1">
-        <img src="images/Elf1.png" alt="Image de Tyn" id="elfe1">
-        <img src="images/Mage1.png" alt="Raynel le Mage" id="mage1">
-        <img src="images/Lich3.png" alt="Image de Grent le Vampire" id="vampire1">
+        <img src="images/humain.png" alt="portrait player1" id="portraitPlayer1">
         
         <!----------------------------Côté Droit de l'écran (Joueur 2)--------------------------------------->
 
-        <img src="images/humain2.png" alt="Image de Herm l'humain" id="hero2">
-        <img src="images/Elf2.png" alt="Image de Tyn" id="elfe2">
-        <img src="images/Mage2.png" alt="Raynel le Mage" id="mage2">
-        <img src="images/Lich3.png" alt="Image de Grent le Vampire" id="vampire2">
+        <img src="images/humain.png" alt="portrait player2" id="portraitPlayer2">
 
         <!--------------------------------------------Left Buttons-------------------------------------------------------->
 
@@ -67,7 +71,7 @@
             <section id = "selector1">
                 <form id="carform">
                     <label for="fname">Écris ton nom :</label>
-                    <input type="text" id="fname" name="fname">
+                    <input id="player1Name" type="text" name="fname">
                     <input id="envoyer1" type="submit" id="envoyer">
                 </form>
                 <br>
@@ -75,7 +79,7 @@
                 <label for="race1">Choisis ton héros :</label>
                 <select id="race1" name="racelist">
                     <option value="humain">Humain</option>
-                    <option value="elfe">Elfe</option>
+                    <option value="elf">Elfe</option>
                     <option value="orc">Orc</option>
                     <option value="vampire">Vampire</option>
                 </select>
@@ -84,7 +88,7 @@
                 <select id="object1" name="objectlist">
                     <option value="bottes">Bottes</option>
                     <option value="baton">Baton</option>
-                    <option value="épée">Épée</option>
+                    <option value="epee">Épée</option>
                     <option value="arc">Arc</option>
                 </select>
             </section>
@@ -92,7 +96,7 @@
             <section id = "selector2">
                 <form  id="carform">
                     <label for="fname">Écris ton nom :</label>
-                    <input type="text" id="fname" name="fname">
+                    <input id="player2Name" type="text" name="fname">
                     <input id="envoyer2" type="submit" id="envoyer">
                 </form>
                 <br>
@@ -100,7 +104,7 @@
                 <label for="race2">Choisis ton héros :</label>
                 <select id="race2" name="racelist">
                     <option value="humain">Humain</option>
-                    <option value="elfe">Elfe</option>
+                    <option value="elf">Elfe</option>
                     <option value="orc">Orc</option>
                     <option value="vampire">Vampire</option>
                 </select>
@@ -109,7 +113,7 @@
                 <select id="object2" name="objectlist">
                     <option value="bottes">Bottes</option>
                     <option value="baton">Baton</option>
-                    <option value="épée">Épée</option>
+                    <option value="epee">Épée</option>
                     <option value="arc">Arc</option>
                 </select>
             </section>
@@ -123,7 +127,7 @@
 
     </section>
 
-
+    <script src="player.js"></script>
     <script src="character.js"></script>
 </body>
 
