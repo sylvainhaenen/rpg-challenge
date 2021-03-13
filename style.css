@@ -155,7 +155,7 @@ Les images et ID portant le chiffre 1 sont faites pour aller sur la gauche de l'
     margin-left: 10%;
 }
 /*-----------------------------------Attaque Display------------------------------------*/
-#attackdisplay1 { 
+#attackDisplay { 
     margin-left: auto;
     margin-right: auto;
     grid-row: span 3;
@@ -168,8 +168,8 @@ Les images et ID portant le chiffre 1 sont faites pour aller sur la gauche de l'
     border-radius:10px;
     padding:20px;
     width:180px;
-    height: 550px;
-    height:auto;
+    height: 100px;
+    overflow: auto;
     place-self:center;
   }
   .hidden {
@@ -250,4 +250,11 @@ Les images et ID portant le chiffre 1 sont faites pour aller sur la gauche de l'
     bottom: 0;
     width: 0px;
     transition: width .5s linear;
+  }
+
+  #portraitPlayer2 {
+
+    -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  
   }

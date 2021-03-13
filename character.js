@@ -1,43 +1,28 @@
-/*--------------------------------------------Create Players------------------------------------*/
+/*--------------------------------------------Initial page----------------------------------*/
 
 let player1 ;
 let player2 ;
-
-
-
-/*--------------------------------------------Character's Name----------------------------------*/
-
 
 showHideElement (document.getElementById("Herm"), false)
 showHideElement (document.getElementById("Tyn"), false)
 showHideElement (document.getElementById("Raynel"), false)
 showHideElement (document.getElementById("Grent"), false)
 
-/*---------------------------------------------Display None-------------------------------------*/
-
-showHideElement (document.getElementById("health1"), false)
-showHideElement (document.getElementById("health2"), false)
-showHideElement (document.getElementById("attackdisplay1"), false)
-var tableauBoutons = document.querySelectorAll(".tonbou")
-
-tableauBoutons.forEach(element => {
-    showHideElement (element, false)
-    
-});
+showHideGameInterface (false)
 
 
 /*----------------------------------------------Display attaques et les boutons lorsque Persos sélectionnés-------------------*/
 
-var player1Ready = false;
-var player2Ready = false;
+let player1Ready = false;
+let player2Ready = false;
 
-var selectRace1 = document.getElementById("race1")
-var selectRace2 = document.getElementById("race2")
+let selectRace1 = document.getElementById("race1")
+let selectRace2 = document.getElementById("race2")
 
-var selectObject1 = document.getElementById("object1")
-var selectObject2 = document.getElementById("object2")
+let selectObject1 = document.getElementById("object1")
+let selectObject2 = document.getElementById("object2")
 
-var selectRaceArray = [selectRace1, selectRace2]
+let selectRaceArray = [selectRace1, selectRace2]
 selectRaceArray.forEach(element => {
 
     element.addEventListener("change", (e) => {
@@ -57,8 +42,8 @@ selectRaceArray.forEach(element => {
 })
 
 
-var boutonEnvoyer1 = document.getElementById("envoyer1")
-var boutonEnvoyer2 = document.getElementById("envoyer2")
+let boutonEnvoyer1 = document.getElementById("envoyer1")
+let boutonEnvoyer2 = document.getElementById("envoyer2")
 const boutonsArray = [boutonEnvoyer1, boutonEnvoyer2]
 
 boutonsArray.forEach(element => {
@@ -86,67 +71,82 @@ boutonsArray.forEach(element => {
     })
 })
 
-
-
-/*------------------------------------------------Items-----------------------------------------------*/
-const items = [
-    {
-        type: "bottes",
-        //effet: (DEX + 30),
-    },
-    {
-        type: "baton",
-        //effet: (HP + 20),
-    },
-    {
-        type: "epee",
-        //effet: (ATK + 30),
-    },
-    {
-        type: "arc",
-        //effet: ("atkx2"),
-    },
-]
 /*------------------------------------------------Fonctions-------------------------------------------------------------------*/
 
 function startGame (){
 
+    let playerSelector1 = document.getElementById("selector1")
+    let playerSelector2 = document.getElementById("selector2")
+
     player1 = new Player (document.getElementById("player1Name").value, selectRace1.selectedOptions[0].value, selectObject1.selectedOptions[0].value) 
     player2 = new Player (document.getElementById("player2Name").value, selectRace2.selectedOptions[0].value, selectObject2.selectedOptions[0].value)
 
-    console.log(player1, player2)
     
-     showGameElements ()
+     showHideGameInterface (true)
+     showHideElement (playerSelector1, false)
+     showHideElement (playerSelector2, false)
+     randomPlayerStart ()
 
 }
 
-function showGameElements (){
+function randomPlayerStart (){
 
-    showHideElement (document.getElementById("attackdisplay1"), true)
 
-    showHideElement (document.getElementById("health1"), true)
+    const oneOrTwo = Math.floor(Math.random() * 2) + 1 
 
-    showHideElement (document.getElementById("health2"), true)
-    
-    tableauBoutons.forEach(element => {
+    if (oneOrTwo === 1){
 
-        showHideElement (element, true)
-    
-    });
+        playersTurn(1);
 
+    } else if (oneOrTwo === 2){
+
+        playersTurn(2);
+
+    }
 }
 
+function showHideGameInterface (show){
+
+        let attackDisplay =  document.getElementById("attackDisplay")
+
+        let health1 = document.getElementById("health1")
+
+        let health2 =  document.getElementById("health2")
+
+        let tableauBoutons = document.querySelectorAll(".tonbouAction")
 
 
+    if(show === true){
 
+        showHideElement (attackDisplay, true)
 
+        showHideElement (health1, true)
 
+        showHideElement (health2, true)
+        
+        tableauBoutons.forEach(element => {
 
+            showHideElement (element, true)
+        
+        });
 
+    } else if (show === false) {
 
+        showHideElement (attackDisplay, false)
 
+        showHideElement (health1, false)
 
+        showHideElement (health2, false)
+        
+        tableauBoutons.forEach(element => {
 
+            showHideElement (element, false)
+        
+        });
+
+    }
+
+}
 
 function showHideElement (element, show){
 
@@ -162,7 +162,7 @@ function showHideElement (element, show){
 
 }
  
-function changePlayerPortrait (player, imgSrc) {
+function changePlayerPortrait (player, imgSrc){
 
     if (player === 1){
 
@@ -177,9 +177,114 @@ function changePlayerPortrait (player, imgSrc) {
     }
 }
 
+function attackLogDisplayMsg (message){
+
+    const messageBox = document.getElementById("messageBox")
+
+    const newMessage = document.createElement("p")
+
+    newMessage.innerHTML = message
+
+    messageBox.prepend(newMessage)
+
+}
+
+function showHidePlayersInterface (player, show){
+
+    const tableauBoutonsPlayer1 = document.querySelectorAll("[data-player='1']")
+
+    const tableauBoutonsPlayer2 = document.querySelectorAll("[data-player='2']")
+
+    if (player === 1){
+        
+        
+        tableauBoutonsPlayer1.forEach(playerButton => {
+            
+            if (show === true){
+                
+                showHideElement (playerButton, true)
+
+            } else if (show === false){
+
+                showHideElement (playerButton, false)
+
+            }
+        
+        })
+
+            
+    } else if (player === 2){
+
+        tableauBoutonsPlayer2.forEach(playerButton => {
+            
+            if (show === true){
+                
+                showHideElement (playerButton, true)
+
+            } else if (show === false){
+
+                showHideElement (playerButton, false)
+
+            }
+        
+        })
+    }
 
 
-/*----------------------------------------------Character Generator--------------------------------*/
+
+    
+
+}
+
+function playersTurn (player){
+
+    
+
+    if (player === 1){
+
+        showHidePlayersInterface (2, false)
+        showHidePlayersInterface (1, true)
+        attackLogDisplayMsg ("Tour de " + player1.name)
+
+        if(this.race === "vampire"){
+
+            
+
+        }
+        
+
+    } else if (player === 2){
+
+        showHidePlayersInterface (1, false)
+        showHidePlayersInterface (2, true)
+        attackLogDisplayMsg ("Tour de " + player2.name) 
+    }
+
+
+
+}
+
+function endGame (winner, message){
+
+    attackLogDisplayMsg(message)
+
+    let replay = confirm("Voulez-vous rejouer ?")
+
+    if (replay){
+
+        location.reload();
+
+    } else {
+
+        endGame (winner, message)
+    }
+
+
+}
+
+
+
+/*----------------------------------------------Character Generator--------------------------------
 function Person(race,item){
     this.race = race;
     this.item = item;
@@ -204,6 +309,7 @@ function Person(race,item){
         return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`);
     };
 }
+*/
 
 
 /*

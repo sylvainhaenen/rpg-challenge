@@ -56,27 +56,26 @@
 
         <!--------------------------------------------Left Buttons-------------------------------------------------------->
 
-        <button type="button" id="button1" class="tonbou">Attaque !</button>
-        <button type="button" id="button2" class="tonbou">Soigner !</button>
-        <button type="button" id="button3" class="tonbou">Brandir !</button>
+        <button data-player="1" type="button" id="button1" class="tonbouAction tonbouHit">Attaque !</button>
+        <button data-player="1" type="button" id="button2" class="tonbouAction tonbouHeal">Soigner !</button>
+        <button data-player="1" type="button" id="button3" class="tonbouAction tonbouYield">Se rendre !</button>
 
         <!--------------------------------------------Right Buttons-------------------------------------------------------->
        
-        <button type="button" id="button4" class="tonbou">Attaque !</button>
-        <button type="button" id="button5" class="tonbou">Soigner !</button>
-        <button type="button" id="button6" class="tonbou">Brandir !</button>
+        <button data-player="2" type="button" id="button4" class="tonbouAction tonbouHit">Attaque !</button>
+        <button data-player="2" type="button" id="button5" class="tonbouAction tonbouHeal">Soigner !</button>
+        <button data-player="2" type="button" id="button6" class="tonbouAction tonbouYield">Se rendre !</button>
 
         <!--------------------------------------------Selectors-------------------------------------------------------->
         
             <section id = "selector1">
                 <form id="carform">
                     <label for="fname">Écris ton nom :</label>
-                    <input id="player1Name" type="text" name="fname">
+                    <input id="player1Name" type="text" name="fname" required>
                     <input id="envoyer1" type="submit" id="envoyer">
                 </form>
                 <br>
                 
-                <label for="race1">Choisis ton héros :</label>
                 <select id="race1" name="racelist">
                     <option value="humain">Humain</option>
                     <option value="elf">Elfe</option>
@@ -84,7 +83,7 @@
                     <option value="vampire">Vampire</option>
                 </select>
             
-                <label for="object1">Choisis ton Objet :</label>
+                
                 <select id="object1" name="objectlist">
                     <option value="bottes">Bottes</option>
                     <option value="baton">Baton</option>
@@ -96,12 +95,12 @@
             <section id = "selector2">
                 <form  id="carform">
                     <label for="fname">Écris ton nom :</label>
-                    <input id="player2Name" type="text" name="fname">
+                    <input  id="player2Name" type="text" name="fname" required>
                     <input id="envoyer2" type="submit" id="envoyer">
                 </form>
                 <br>
                 
-                <label for="race2">Choisis ton héros :</label>
+                
                 <select id="race2" name="racelist">
                     <option value="humain">Humain</option>
                     <option value="elf">Elfe</option>
@@ -109,7 +108,7 @@
                     <option value="vampire">Vampire</option>
                 </select>
                 
-                <label for="object2">Choisis ton Objet :</label>
+                
                 <select id="object2" name="objectlist">
                     <option value="bottes">Bottes</option>
                     <option value="baton">Baton</option>
@@ -121,14 +120,15 @@
         
         <!--------------------------------------------Attaques Log and display------------------------------------------------------>
    
-        <section id="attackdisplay1">
-           <p id="greetings">Attaques Log</p>   
+        <section id="attackDisplay">
+           <p id="messageBox"></p>   
         </section>
 
     </section>
 
     <script src="player.js"></script>
     <script src="character.js"></script>
+    <script src="gamelogic.js"></script>
 </body>
 
 </html>
